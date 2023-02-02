@@ -11,5 +11,5 @@ public void QuitGame(){
     // Esto es para quitar el juego. Por si acaso no se entendio. 
 }
 
-// con esto ya tienen dos funciones del menu.
+// con esto ya tienen dos funciones del menu, para el repositorio.
 
