@@ -39,6 +39,14 @@ public class IANpc : MonoBehaviour
         if (collision.gameObject.tag == "PJprincipal")
         {
             rb2d.velocity = Vector2.zero;
+            rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
+    }
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "PJprincipal")
+        {
+            rb2d.constraints = RigidbodyConstraints2D.None;
         }
     }
 }
