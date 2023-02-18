@@ -5,20 +5,22 @@ using UnityEngine;
 public class IANpc : MonoBehaviour
 {
     [SerializeField] private Transform[] waypoints;
-    [SerializeField] private float speed = 2f;
+    [SerializeField] private float vel_mov = 2f;
     [SerializeField] private float stopping_Distance = 2f;
 
     private Rigidbody2D rb2d;
+    private SpriteRenderer sp;
     private int currentWaypoint = 0;
 
     private void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        sp = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
     {
-        if (Vector2.Distance(transform.position, waypoints[currentWaypoint].position) < stoppingDistance)
+        if (Vector2.Distance(transform.position, waypoints[currentWaypoint].position) < stopping_Distance)
         {
             currentWaypoint++;
 
@@ -30,7 +32,8 @@ public class IANpc : MonoBehaviour
         else
         {
             Vector2 direction = (waypoints[currentWaypoint].position - transform.position).normalized;
-            rb2d.velocity = direction * speed;
+            sp.flipX = (direction.x < 0);
+            rb2d.velocity = direction * vel_mov;
         }
     }
 
